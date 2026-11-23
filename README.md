@@ -1,235 +1,187 @@
 <div align="center">
 
-# 🥗 NutriPlan
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=220&section=header&text=NutriPlan&fontSize=76&fontColor=ffffff&animation=fadeIn&fontAlignY=36&desc=Personalized%20nutrition%20%26%20meal%20planning%2C%20powered%20by%20real%20logic&descAlignY=58&descSize=20" width="100%" alt="NutriPlan banner" />
 
-### Plan smarter. Eat better. Track what matters.
+<a href="https://git.io/typing-svg">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1000&color=2EA043&center=true&vCenter=true&width=720&lines=Calculate+your+calorie+%26+macro+targets;Plan+meals+for+the+whole+week;Track+daily+intake+against+your+goals;Swap+foods+without+breaking+your+macros;AI+suggestions+that+are+validated%2C+not+trusted" alt="Typing animation" />
+</a>
 
-A full-stack nutrition and meal-planning platform with a verified nutrition engine and AI-assisted meal suggestions.
+<br/>
 
-![Status](https://img.shields.io/badge/status-in%20development-orange?style=for-the-badge)
+![Status](https://img.shields.io/badge/status-in%20planning-orange?style=for-the-badge)
+![Stage](https://img.shields.io/badge/stage-MERN%20MVP%20first-blue?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
 
 ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=flat-square&logo=prisma&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
 ![Gemini](https://img.shields.io/badge/Gemini%20API-8E75B2?style=flat-square&logo=googlegemini&logoColor=white)
 
-[Live Demo](#) · [Demo Video](#) · [Report a Bug](../../issues) · [Request a Feature](../../issues)
+**[Live Demo](#)** · **[API Docs](#api-overview)** · **[Architecture](#architecture)** · **[Roadmap](#roadmap)**
 
 </div>
 
 ---
 
-## 📑 Table of Contents
+> **Project status:** this README describes the planned design of NutriPlan. Items in the [Roadmap](#roadmap) are ticked only after they are built and verified. Screenshots, the demo link and any metrics are added when they exist, never before.
 
-- [About](#-about)
-- [Features](#-features)
-- [Screenshots](#-screenshots)
-- [Architecture](#-architecture)
-- [Tech Stack](#-tech-stack)
-- [The Nutrition Engine](#-the-nutrition-engine)
-- [AI Integration](#-ai-integration)
-- [Data Model](#-data-model)
-- [API Overview](#-api-overview)
-- [Getting Started](#-getting-started)
-- [Testing](#-testing)
-- [Security](#-security)
-- [Roadmap](#-roadmap)
-- [Technical Challenges & Trade-offs](#-technical-challenges--trade-offs)
-- [Project Structure](#-project-structure)
-- [Contributing](#-contributing)
-- [License](#-license)
-- [Author](#-author)
+## Table of Contents
 
----
-
-## 🎯 About
-
-Most nutrition apps either track food or suggest meals, and few do both reliably. **NutriPlan** lets users set their goals and preferences, build weekly meal plans, track daily intake, and get intelligent suggestions. Every suggestion is checked against real nutrition data before it reaches the user.
-
-**Problem it solves**
-
-- Hitting calorie and macro targets takes manual arithmetic.
-- Meal plans fall apart when one food needs to be swapped.
-- AI-generated nutrition advice can't be trusted unless it is validated.
-
-**What this project demonstrates:** building, integrating, testing and deploying a complete software product independently, then extending it with AI.
-
-> 📌 **Project approach:** NutriPlan is built in two stages. **Stage 1** is a MERN MVP (React, Node, Express, MongoDB). **Stage 2** upgrades it to a modern stack (Next.js, TypeScript, PostgreSQL, Redis, Docker, CI/CD) and adds AI features.
+- [What is NutriPlan?](#what-is-nutriplan)
+- [Why this project exists](#why-this-project-exists)
+- [Features](#features)
+- [How the nutrition engine works](#how-the-nutrition-engine-works)
+- [Architecture](#architecture)
+- [Tech stack](#tech-stack)
+- [Data model](#data-model)
+- [API overview](#api-overview)
+- [AI integration design](#ai-integration-design)
+- [Security](#security)
+- [Getting started](#getting-started)
+- [Testing](#testing)
+- [Project structure](#project-structure)
+- [Roadmap](#roadmap)
+- [Technical challenges](#technical-challenges)
+- [Known limitations](#known-limitations)
+- [Contributing](#contributing)
 
 ---
 
-## ✨ Features
+## What is NutriPlan?
 
-### Core (MVP)
-- 🔐 **Authentication and protected routes** with JWT-based sessions
-- 👤 **User profiles** with goals, dietary preferences and allergies
-- 🍎 **Food search and detail pages** with full nutrient breakdowns
-- 📅 **Meal-plan builder** with full CRUD
-- 🔁 **Meal substitutions** that recalculate totals instantly
-- 📊 **Daily and weekly nutrition tracking** (calories, protein, carbs, fats)
-- 📈 **Dashboard and analytics** with macro charts, weekly trends and meal history
-- ✅ **Plan validation** against user-defined targets
+NutriPlan is a full-stack web application where users set up a nutrition profile, get **personalized daily calorie and macro targets**, build **weekly meal plans**, log what they eat, and see how they are doing against their goals. When a food doesn't fit, NutriPlan proposes **substitutions** that keep the day's numbers on track.
 
-### Modern upgrade
-- ⚡ Next.js and TypeScript with end-to-end type safety
-- 🐘 PostgreSQL with Prisma or Drizzle, plus constraints and migrations
-- 🚀 Redis caching where it is justified
-- 🐳 Docker and a CI/CD pipeline
+The core of the project is the **nutrition and planning logic**, not a dashboard of static data. The app is fully usable without any AI; the AI features are an optional layer on top.
 
-### AI features
-- 🤖 Personalised meal suggestions
-- 🔄 Smart food-substitution recommendations
-- 💬 Plain-language explanations of nutritional trade-offs
-- 📝 Meal-plan draft generation
-- 🛡️ **Validation of every AI suggestion against real nutrition data**
+## Why this project exists
 
----
+Most meal-planning apps either show generic advice or lock useful features behind paywalls. NutriPlan is built to demonstrate how to:
 
-## 🖼️ Screenshots
+- turn a user's body metrics and goals into **explainable** numeric targets,
+- model food, meals and plans in a **relational schema**,
+- build a **secure, validated REST API**,
+- add **AI where it solves a real problem**, with its output checked before it reaches the user.
 
-> Screenshots will be added as the UI is built.
+## Features
 
-| Dashboard | Meal Planner | Food Details |
-|:---:|:---:|:---:|
-| _coming soon_ | _coming soon_ | _coming soon_ |
+| Area | What you get |
+|---|---|
+| **Profile and goals** | Age, sex, height, weight, activity level, goal (lose / maintain / gain), dietary preferences and allergies |
+| **Personalized targets** | Daily calories, protein, carbs and fat computed from the profile |
+| **Food search** | Search foods and view per-serving nutrition details |
+| **Meal planner** | Weekly planner with breakfast, lunch, dinner and snacks |
+| **Daily tracking** | Log meals and see progress against targets in real time |
+| **Smart substitutions** | Swap a food for one with similar macros that respects preferences |
+| **Analytics** | Weekly and monthly trends in calories and macros |
+| **AI assistant** *(stage 2)* | Natural-language planning and context-aware suggestions |
+| **Auth** | Registration, login, protected routes, profile management |
 
----
+## How the nutrition engine works
 
-## 🏗️ Architecture
+The engine is plain, testable code, independent of the UI and the AI.
+
+**1. Basal metabolic rate (Mifflin–St Jeor)**
+
+```
+Male:    BMR = 10·weight(kg) + 6.25·height(cm) − 5·age + 5
+Female:  BMR = 10·weight(kg) + 6.25·height(cm) − 5·age − 161
+```
+
+**2. Total daily energy expenditure**
+
+```
+TDEE = BMR × activity_factor      (sedentary 1.2 … very active 1.9)
+```
+
+**3. Goal adjustment** — the calorie target is TDEE adjusted for the chosen goal (deficit, maintenance or surplus).
+
+**4. Macro split** — calories are divided into protein, carbohydrate and fat targets (4, 4 and 9 kcal per gram respectively).
+
+**5. Daily tracking** — every logged item contributes `quantity × per-serving nutrition`; the dashboard aggregates these against the targets.
+
+**6. Substitutions** — candidate foods are scored by macro distance from the original, filtered by allergies and preferences, and ranked.
+
+> The formulas are the standard published ones; the exact activity factors, goal adjustments and macro ratios are configurable and documented in `docs/nutrition-engine.md`. This is a planning tool, **not medical advice**.
+
+## Architecture
 
 ```mermaid
 flowchart LR
-    U[User Browser] --> FE[Next.js + TypeScript Frontend]
-    FE -->|REST / JSON| API[API Layer]
-    API --> AUTH[Auth & RBAC Middleware]
-    API --> NE[Nutrition Engine]
-    API --> AI[AI Service]
-    NE --> DB[(PostgreSQL)]
-    API --> DB
-    API --> CACHE[(Redis)]
-    AI -->|Structured prompts| GEM[Gemini API]
-    AI -->|Validate output| NE
+    U[User Browser] -->|HTTPS| FE[Frontend<br/>React → Next.js]
+    FE -->|REST / JSON| API[API Layer<br/>Express → Next.js routes]
+    API --> SVC[Service Layer<br/>Nutrition Engine · Planner · Tracker]
+    SVC --> DB[(Database<br/>MongoDB → PostgreSQL)]
+    SVC -. optional .-> CACHE[(Redis Cache)]
+    SVC -. optional .-> AI[AI Module<br/>Gemini API]
+    AI --> VAL[Validation Layer<br/>schema + nutrition checks]
+    VAL --> SVC
 ```
 
 **Design principles**
 
-- **Separation of concerns.** The nutrition engine is a pure, framework-independent module that is easy to test.
-- **Never trust AI output.** Suggestions pass through the nutrition engine before they are shown.
-- **Cache only what is justified.** Redis is introduced for measured needs, not by default.
+- **Business logic is separated** from routes and controllers, so it is unit-testable.
+- **The AI layer is optional**: if it fails or is disabled, every core feature still works.
+- **Two-stage build**: ship a solid MERN MVP first, then migrate to a modern stack.
 
----
+### Evolution of the stack
 
-## 🧰 Tech Stack
-
-| Stage | Layer | Technologies |
+| Layer | Stage 1 — MERN MVP | Stage 2 — Modern full-stack |
 |---|---|---|
-| **MVP** | Frontend | HTML, CSS, JavaScript, React |
-| | Backend | Node.js, Express.js |
-| | Database | MongoDB |
-| | API | REST |
-| **Modern** | Frontend | Next.js, TypeScript, Tailwind CSS |
-| | Data | PostgreSQL, Prisma or Drizzle |
-| | Caching | Redis |
-| | Charts | Recharts |
-| **AI** | LLM | Gemini API (structured outputs) |
-| **DevOps** | Deployment | Docker, cloud hosting, CI/CD |
-| **Quality** | Testing | Jest / Vitest, API and integration tests |
+| Frontend | React, HTML, CSS, JavaScript | Next.js, TypeScript, Tailwind CSS |
+| Backend | Node.js, Express | Next.js server functionality / Node service |
+| Database | MongoDB | PostgreSQL + Prisma (or Drizzle) |
+| Auth | JWT or secure sessions, hashed passwords | Improved auth and authorization |
+| Extras | — | Redis (only where useful), Docker, Gemini API |
 
----
+## Tech stack
 
-## 🧮 The Nutrition Engine
+**Frontend:** React · Next.js · TypeScript · Tailwind CSS
+**Backend:** Node.js · Express.js · REST APIs
+**Database:** MongoDB → PostgreSQL · Prisma / Drizzle
+**AI:** Gemini API
+**Tooling:** Git · GitHub · Docker · deployment platform · API and unit testing
 
-The engine is the heart of NutriPlan. It is isolated from the web layer and covered by unit tests.
+## Data model
 
-**Energy needs**
-
-- **BMR** (Mifflin-St Jeor):
-  - Men: `10 × weight(kg) + 6.25 × height(cm) − 5 × age + 5`
-  - Women: `10 × weight(kg) + 6.25 × height(cm) − 5 × age − 161`
-- **TDEE** = BMR × activity multiplier
-- **Goal calories** = TDEE adjusted for the user's goal (deficit, maintenance or surplus)
-
-**Macro energy values**
-
-| Macronutrient | kcal per gram |
-|---|---|
-| Protein | 4 |
-| Carbohydrates | 4 |
-| Fat | 9 |
-
-**Responsibilities**
-
-- Per-food nutrient scaling by portion size
-- Meal, daily and weekly totals
-- Substitution impact calculation
-- Validation of meal plans against targets, with a configurable tolerance
-
-> ⚠️ NutriPlan is an educational and planning tool, not medical advice. It does not replace a qualified dietitian or physician.
-
----
-
-## 🤖 AI Integration
-
-AI is a **suggestion layer**, never the source of truth.
-
-```mermaid
-sequenceDiagram
-    participant User
-    participant API
-    participant Gemini
-    participant Engine as Nutrition Engine
-    User->>API: Request meal suggestions
-    API->>Gemini: Prompt + user profile + constraints
-    Gemini-->>API: Structured JSON suggestions
-    API->>Engine: Look up foods, recompute nutrients
-    Engine-->>API: Verified totals / rejects mismatches
-    API-->>User: Only validated suggestions
-```
-
-- **Structured outputs:** responses are parsed against a schema, and malformed responses are rejected.
-- **Grounding:** nutrient values come from the database, not from the model.
-- **Allergy and preference filters** are applied after generation.
-- **Graceful degradation:** if the AI service fails, the rest of the app keeps working.
-
----
-
-## 🗄️ Data Model
+Planned relational model for stage 2 (PostgreSQL):
 
 ```mermaid
 erDiagram
     USER ||--o| PROFILE : has
     USER ||--o{ MEAL_PLAN : creates
-    MEAL_PLAN ||--o{ MEAL : contains
-    MEAL ||--o{ MEAL_ITEM : includes
-    FOOD ||--o{ MEAL_ITEM : "is used in"
     USER ||--o{ FOOD_LOG : records
-    FOOD ||--o{ FOOD_LOG : "is logged in"
+    MEAL_PLAN ||--|{ PLANNED_MEAL : contains
+    PLANNED_MEAL ||--|{ MEAL_ITEM : includes
+    FOOD ||--o{ MEAL_ITEM : used_in
+    FOOD ||--o{ FOOD_LOG : logged_as
 
     USER {
         uuid id PK
-        string email UK
+        string email
         string passwordHash
+        datetime createdAt
     }
     PROFILE {
         uuid userId FK
         int age
+        string sex
         float heightCm
         float weightKg
-        string goal
         string activityLevel
+        string goal
+        string[] allergies
     }
     FOOD {
         uuid id PK
         string name
-        float caloriesPer100g
+        float kcalPerServing
         float proteinG
         float carbsG
         float fatG
@@ -237,207 +189,199 @@ erDiagram
     MEAL_PLAN {
         uuid id PK
         uuid userId FK
-        date startDate
-        date endDate
+        date weekStart
     }
-    MEAL {
+    PLANNED_MEAL {
         uuid id PK
         uuid planId FK
-        string type
-        date date
+        string slot
+        date day
     }
     MEAL_ITEM {
         uuid id PK
         uuid mealId FK
         uuid foodId FK
-        float grams
+        float servings
     }
     FOOD_LOG {
         uuid id PK
         uuid userId FK
         uuid foodId FK
-        float grams
+        float servings
         datetime loggedAt
     }
 ```
 
----
+## API overview
 
-## 🔌 API Overview
+> Planned endpoints. The final reference will live in `docs/api.md` (and OpenAPI/Swagger if added).
 
-| Method | Endpoint | Description | Auth |
-|---|---|---|:---:|
-| `POST` | `/api/auth/register` | Create an account | ❌ |
-| `POST` | `/api/auth/login` | Log in and receive a session | ❌ |
-| `GET` | `/api/profile` | Get the current user's profile | ✅ |
-| `PUT` | `/api/profile` | Update goals and preferences | ✅ |
-| `GET` | `/api/foods?query=` | Search foods | ✅ |
-| `GET` | `/api/foods/:id` | Food details | ✅ |
-| `GET` | `/api/meal-plans` | List meal plans | ✅ |
-| `POST` | `/api/meal-plans` | Create a meal plan | ✅ |
-| `PUT` | `/api/meal-plans/:id` | Update a meal plan | ✅ |
-| `DELETE` | `/api/meal-plans/:id` | Delete a meal plan | ✅ |
-| `POST` | `/api/meal-plans/:id/validate` | Validate against targets | ✅ |
-| `POST` | `/api/logs` | Log consumed food | ✅ |
-| `GET` | `/api/analytics/weekly` | Weekly nutrition summary | ✅ |
-| `POST` | `/api/ai/suggestions` | Get validated AI suggestions | ✅ |
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/auth/register` | Create an account |
+| `POST` | `/api/auth/login` | Log in |
+| `GET` | `/api/profile` | Get profile and computed targets |
+| `PUT` | `/api/profile` | Update profile and goals |
+| `GET` | `/api/foods?query=` | Search foods |
+| `GET` | `/api/foods/:id/substitutes` | Suggested substitutions |
+| `GET` | `/api/plans?week=` | Get a weekly meal plan |
+| `POST` | `/api/plans` | Create or update a plan |
+| `POST` | `/api/logs` | Log a food entry |
+| `GET` | `/api/logs/summary?date=` | Daily totals vs. targets |
+| `GET` | `/api/analytics/trends` | Weekly / monthly trends |
+| `POST` | `/api/ai/suggest` | AI-assisted meal suggestion *(stage 2)* |
 
-> The final API contract will be documented with OpenAPI / Swagger.
+## AI integration design
 
----
+AI is only valuable here if it is **trustworthy**. The rules:
 
-## 🚀 Getting Started
+1. **The app never depends on AI.** All core flows work without it.
+2. **Structured output only.** The model is prompted to return JSON, which is parsed against a strict schema.
+3. **Nutrition values are verified.** AI-suggested foods are matched against the app's food database; unknown items or implausible numbers are rejected or flagged.
+4. **Constraints are enforced in code**, not just in the prompt (allergies, calorie and macro bounds).
+5. **Everything is tracked**: prompts, responses and validation results are logged for debugging and evaluation.
+6. **Rate limited** per user to control cost and abuse.
 
-### Prerequisites
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant API as API
+    participant AI as Gemini
+    participant V as Validator
+    participant DB as Food DB
+    U->>API: "High-protein vegetarian dinner under 600 kcal"
+    API->>AI: Prompt + user profile + constraints
+    AI-->>API: Structured JSON suggestion
+    API->>V: Validate schema + constraints
+    V->>DB: Match foods, verify nutrition
+    DB-->>V: Verified values
+    V-->>API: Accepted / rejected + reasons
+    API-->>U: Verified suggestion
+```
 
-- Node.js 20+
-- npm or pnpm
-- MongoDB (MVP) or PostgreSQL (modern stack)
-- Docker (optional)
-- A Gemini API key (for AI features)
+## Security
 
-### Installation
+- Passwords hashed with a strong algorithm (bcrypt or argon2); never stored in plain text
+- JWT or secure session cookies with sensible expiry
+- Input validation on every endpoint (schema validation)
+- Authorization checks so users can only access their own data
+- API rate limiting
+- Secrets in environment variables, never committed
+- CORS and security headers configured
+
+## Getting started
+
+> Setup commands will be finalised as the project is built. This is the intended flow.
+
+**Prerequisites:** Node.js 20+, a database (MongoDB for stage 1, PostgreSQL for stage 2), Git. Docker is optional.
 
 ```bash
-# 1. Clone the repository
+# 1. Clone
 git clone https://github.com/<your-username>/nutriplan.git
 cd nutriplan
 
 # 2. Install dependencies
 npm install
 
-# 3. Configure environment variables
+# 3. Configure environment
 cp .env.example .env
+# fill in the values below
 
 # 4. Run in development
 npm run dev
 ```
 
-### Environment variables
+**Environment variables**
 
-| Variable | Description |
+| Variable | Purpose |
 |---|---|
 | `DATABASE_URL` | Database connection string |
-| `JWT_SECRET` | Secret used to sign tokens |
-| `REDIS_URL` | Redis connection string (modern stack) |
-| `GEMINI_API_KEY` | API key for AI features |
-| `NODE_ENV` | `development` or `production` |
+| `JWT_SECRET` | Secret for signing tokens |
+| `GEMINI_API_KEY` | Enables AI features (optional) |
+| `REDIS_URL` | Enables caching (optional) |
 
-> 🔒 Never commit `.env`. Use `.env.example` with placeholder values only.
-
-### Run with Docker
+**With Docker**
 
 ```bash
 docker compose up --build
 ```
 
-> ℹ️ Commands above are the intended setup. Adjust them to match the final scripts in `package.json`.
+## Testing
 
----
-
-## 🧪 Testing
+- **Unit tests** for the nutrition engine (BMR, TDEE, macro maths, substitution scoring)
+- **API tests** for every endpoint, including error cases
+- **Authentication and authorization tests**
+- **Validation tests** for malformed input and AI output
 
 ```bash
-npm test                # unit tests
-npm run test:integration # API and integration tests
-npm run test:coverage   # coverage report
+npm test
 ```
 
-**Testing priorities**
+## Project structure
 
-1. Nutrition engine: calculations, rounding and edge cases
-2. Authentication and authorisation flows
-3. Meal-plan CRUD and validation
-4. AI response validation and failure handling
-
----
-
-## 🔐 Security
-
-- Passwords hashed with **bcrypt** or **argon2**, never stored in plain text
-- JWT secrets and API keys loaded from environment variables
-- Input validation on every endpoint, with a schema validator such as Zod
-- Protected routes and ownership checks, so users can only access their own data
-- Rate limiting on authentication and AI endpoints
-- Secure HTTP headers (Helmet), and CORS restricted to known origins
-- Parameterised queries and ORM usage to prevent injection
-
----
-
-## 🗺️ Roadmap
-
-- [ ] **Phase 1:** Product planning, wireframes, data modelling
-- [ ] **Phase 2:** Frontend (landing page, auth screens, dashboard, food search)
-- [ ] **Phase 3:** Backend (REST APIs, authentication, CRUD)
-- [ ] **Phase 4:** Nutrition engine (calories, macros, substitutions, validation)
-- [ ] **Phase 5:** Dashboard and analytics (charts, trends, history)
-- [ ] **Phase 6:** Testing, security hardening, first deployment
-- [ ] **Phase 7:** Modern upgrade (Next.js, TypeScript, PostgreSQL, Redis, Docker, CI/CD)
-- [ ] **Phase 8:** AI integration (suggestions, substitutions, explanations, drafts)
-
----
-
-## 🧠 Technical Challenges & Trade-offs
-
-> This section will be filled with real decisions as the project progresses. Prompts to answer honestly:
-
-| Topic | Decision to document |
-|---|---|
-| MongoDB → PostgreSQL | Why migrate, and what changed in the data model? |
-| Caching | What was cached, why, and how is it invalidated? |
-| Nutrition accuracy | Which data source, and how are rounding and units handled? |
-| AI reliability | How are hallucinated or invalid suggestions detected? |
-| Auth strategy | Why this session approach? |
-
----
-
-## 📁 Project Structure
-
-```text
+```
 nutriplan/
-├── apps/
-│   ├── web/                # Frontend (React → Next.js)
-│   └── api/                # Backend (Express)
-├── packages/
-│   └── nutrition-engine/   # Pure, tested calculation logic
-├── prisma/                 # Schema and migrations (modern stack)
-├── docs/                   # Architecture diagrams, ADRs, API docs
+├── client/                # Frontend
+│   ├── components/
+│   ├── pages/ (or app/)
+│   └── lib/
+├── server/                # Backend
+│   ├── routes/
+│   ├── controllers/
+│   ├── services/          # nutrition engine, planner, tracker
+│   ├── models/ (or prisma/)
+│   ├── middleware/        # auth, validation, rate limiting
+│   └── ai/                # prompts, client, output validation
+├── tests/
+├── docs/                  # API reference, engine notes, diagrams
 ├── docker-compose.yml
-├── .github/workflows/      # CI/CD
 └── README.md
 ```
 
-> This is a suggested layout and can change as the project evolves.
+## Roadmap
+
+**Stage 1 — MERN MVP**
+- [ ] Requirements, user flows, wireframes, initial schema
+- [ ] Landing, auth, dashboard, planner and food search UI
+- [ ] Express REST API with MongoDB
+- [ ] Authentication, profile and preferences
+- [ ] Calorie and macro calculations
+- [ ] Daily tracking, meal planning, substitutions
+- [ ] API and auth tests, deployment, README and screenshots
+
+**Stage 2 — Modern full-stack and AI**
+- [ ] Migrate to TypeScript and Next.js
+- [ ] Move to PostgreSQL with Prisma or Drizzle
+- [ ] Improve authentication and authorization
+- [ ] Caching with Redis where it helps
+- [ ] AI meal suggestions and natural-language planning
+- [ ] AI output validation and tracking
+
+## Technical challenges
+
+*This section will be filled in with real problems and solutions as they are encountered, for example:*
+
+- Designing a schema that supports foods, servings, plans and logs without duplication
+- Keeping nutrition calculations accurate and unit-tested
+- Validating AI-generated nutrition data against a trusted source
+- Migrating from MongoDB to PostgreSQL without losing data integrity
+
+## Known limitations
+
+- Nutrition targets are estimates from standard formulas, not medical advice
+- Food data quality depends on the data source used
+- AI suggestions are validated but can still be imperfect
+
+## Contributing
+
+Issues and suggestions are welcome. Please open an issue before large changes.
 
 ---
-
-## 🤝 Contributing
-
-Contributions, issues and suggestions are welcome.
-
-1. Fork the project
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit with a meaningful message: `git commit -m "feat: add amazing feature"`
-4. Push the branch: `git push origin feature/amazing-feature`
-5. Open a pull request
-
----
-
-## 📄 License
-
-Distributed under the MIT License. See `LICENSE` for details.
-
----
-
-## 👤 Author
-
-**Your Name**
-
-- GitHub: [@your-username](https://github.com/your-username)
-- LinkedIn: [your-profile](https://linkedin.com/in/your-profile)
 
 <div align="center">
 
-⭐ If you find this project useful, consider giving it a star.
+**Built to be understood, explained and defended, not just demoed.**
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=120&section=footer" width="100%" alt="footer" />
 
 </div>
